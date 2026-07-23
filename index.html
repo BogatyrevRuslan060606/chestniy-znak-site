@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Консультации по маркировке «Честный ЗНАК» | Профессиональные услуги</title>
+    <meta name="description" content="Помогаю бизнесу работать с маркировкой «Честный ЗНАК» — быстро, без ошибок и лишней головной боли. Регистрация, маркировка, API, интеграция.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container">
+            <div class="header__inner">
+                <a href="#" class="logo">
+                    <span class="logo__icon">🏷</span>
+                    <span class="logo__text">Честный<span class="logo__accent">ЗНАК</span></span>
+                </a>
+                <nav class="nav">
+                    <a href="#services" class="nav__link">Услуги</a>
+                    <a href="#programming" class="nav__link">Программирование</a>
+                    <a href="#about" class="nav__link">Обо мне</a>
+                    <a href="#contact" class="nav__link">Контакты</a>
+                </nav>
+                <button class="burger" id="burger" aria-label="Меню">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Nav -->
+    <div class="mobile-nav" id="mobileNav">
+        <a href="#services" class="mobile-nav__link">Услуги</a>
+        <a href="#programming" class="mobile-nav__link">Программирование</a>
+        <a href="#about" class="mobile-nav__link">Обо мне</a>
+        <a href="#contact" class="mobile-nav__link">Контакты</a>
+    </div>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero__bg"></div>
+        <div class="container hero__container">
+            <div class="hero__content">
+                <div class="hero__badge">Профессиональные консультации</div>
+                <h1 class="hero__title">Маркировка <span class="text-gradient">«Честный ЗНАК»</span> без головной боли</h1>
+                <p class="hero__subtitle">Помогаю бизнесу работать с маркировкой — быстро, без ошибок и штрафов. От регистрации до регулярных отчётов.</p>
+                <div class="hero__buttons">
+                    <a href="#contact" class="btn btn--primary">Получить консультацию</a>
+                    <a href="#services" class="btn btn--outline">Смотреть услуги</a>
+                </div>
+                <div class="hero__stats">
+                    <div class="hero__stat">
+                        <span class="hero__stat-number">50+</span>
+                        <span class="hero__stat-label">Клиентов</span>
+                    </div>
+                    <div class="hero__stat">
+                        <span class="hero__stat-number">0</span>
+                        <span class="hero__stat-label">Штрафов</span>
+                    </div>
+                    <div class="hero__stat">
+                        <span class="hero__stat-number">100%</span>
+                        <span class="hero__stat-label">Документооборот</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero__visual">
+                <div class="hero__card hero__card--1">
+                    <div class="hero__card-icon">📋</div>
+                    <div class="hero__card-text">Регистрация в ГИС МТ</div>
+                </div>
+                <div class="hero__card hero__card--2">
+                    <div class="hero__card-icon">🏷</div>
+                    <div class="hero__card-text">Эмиссия кодов</div>
+                </div>
+                <div class="hero__card hero__card--3">
+                    <div class="hero__card-icon">📊</div>
+                    <div class="hero__card-text">Отчёты и аналитика</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services: Честный ЗНАК -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Честный ЗНАК</span>
+                <h2 class="section-title">Услуги по маркировке</h2>
+                <p class="section-subtitle">Полный цикл работы с системой «Честный знак» — от регистрации до технической поддержки</p>
+            </div>
+            <div class="services__grid">
+                <div class="service-card" data-aos="fade-up">
+                    <div class="service-card__icon">🔍</div>
+                    <h3 class="service-card__title">Анализ требований</h3>
+                    <p class="service-card__desc">Подготовка к регистрации в системе «Честный знак»</p>
+                    <div class="service-card__price">от 1 000 ₽</div>
+                </div>
+                <div class="service-card" data-aos="fade-up">
+                    <div class="service-card__icon">📝</div>
+                    <h3 class="service-card__title">Оформление товаров</h3>
+                    <p class="service-card__desc">Консультации по оформлению и маркировке товаров</p>
+                    <div class="service-card__price">от 1 000 ₽</div>
+                </div>
+                <div class="service-card" data-aos="fade-up">
+                    <div class="service-card__icon">📂</div>
+                    <h3 class="service-card__title">Подготовка документов</h3>
+                    <p class="service-card__desc">Помощь в сборе и подготовке необходимой документации</p>
+                    <div class="service-card__price">от 1 000 ₽</div>
+                </div>
+                <div class="service-card" data-aos="fade-up">
+                    <div class="service-card__icon">🏢</div>
+                    <h3 class="service-card__title">Регистрация предприятия</h3>
+                    <p class="service-card__desc">Регистрация предприятия в системе «Честный знак»</p>
+                    <div class="service-card__price">от 1 000 ₽</div>
+                </div>
+                <div class="service-card" data-aos="fade-up">
+                    <div class="service-card__icon">🔐</div>
+                    <h3 class="service-card__title">Настройка доступов</h3>
+                    <p class="service-card__desc">Настройка учётных записей и прав доступа</p>
+                    <div class="service-card__price">от 1 000 ₽</div>
+                </div>
+                <div class="service-card" data-aos="fade-up">
+                    <div class="service-card__icon">🔗</div>
+                    <h3 class="service-card__title">Интеграция с 1С/ERP</h3>
+                    <p class="service-card__desc">Интеграция системы учёта с платформой «Честный знак»</p>
+                    <div class="service-card__price">от 1 000 ₽</div>
+                </div>
+                <div class="service-card" data-aos="fade-up">
+                    <div class="service-card__icon">📐</div>
+                    <h3 class="service-card__title">Схемы маркировки</h3>
+                    <p class="service-card__desc">Разработка схем маркировки для продукции</p>
+                    <div class="service-card__price">от 1 000 ₽</div>
+                </div>
+                <div class="service-card" data-aos="fade-up">
+                    <div class="service-card__icon">👨‍🏫</div>
+                    <h3 class="service-card__title">Обучение сотрудников</h3>
+                    <p class="service-card__desc">Обучение сотрудников работе с системой «Честный знак»</p>
+                    <div class="service-card__price">от 1 000 ₽</div>
+                </div>
+                <div class="service-card" data-aos="fade-up">
+                    <div class="service-card__icon">⚖️</div>
+                    <h3 class="service-card__title">Законодательство</h3>
+                    <p class="service-card__desc">Консультации по соблюдению требований законодательства</p>
+                    <div class="service-card__price">от 1 000 ₽</div>
+                </div>
+                <div class="service-card" data-aos="fade-up">
+                    <div class="service-card__icon">🛠</div>
+                    <h3 class="service-card__title">Техподдержка</h3>
+                    <p class="service-card__desc">Техническая поддержка и сопровождение процессов маркировки</p>
+                    <div class="service-card__price">от 1 000 ₽</div>
+                </div>
+                <div class="service-card" data-aos="fade-up">
+                    <div class="service-card__icon">✅</div>
+                    <h3 class="service-card__title">Аудит процессов</h3>
+                    <p class="service-card__desc">Аудит текущих процессов на соответствие требованиям системы</p>
+                    <div class="service-card__price">от 1 000 ₽</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programming Services -->
+    <section class="services services--alt" id="programming">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Программирование</span>
+                <h2 class="section-title">IT-услуги</h2>
+                <p class="section-subtitle">Технические решения для интеграции и автоматизации</p>
+            </div>
+            <div class="services__grid services__grid--programming">
+                <div class="service-card service-card--dev" data-aos="fade-up">
+                    <div class="service-card__icon">⚡</div>
+                    <h3 class="service-card__title">Создание API</h3>
+                    <p class="service-card__desc">Разработка и настройка API для вашей системы</p>
+                    <div class="service-card__price">от 2 000 ₽</div>
+                </div>
+                <div class="service-card service-card--dev" data-aos="fade-up">
+                    <div class="service-card__icon">🔗</div>
+                    <h3 class="service-card__title">Интеграция с внешними сервисами</h3>
+                    <p class="service-card__desc">Подключение к внешним API и сервисам</p>
+                    <div class="service-card__price">от 2 000 ₽</div>
+                </div>
+                <div class="service-card service-card--dev" data-aos="fade-up">
+                    <div class="service-card__icon">🤖</div>
+                    <h3 class="service-card__title">ИИ и нейросети</h3>
+                    <p class="service-card__desc">Разработка и настройка решений на базе ИИ</p>
+                    <div class="service-card__price">от 2 000 ₽</div>
+                </div>
+                <div class="service-card service-card--dev" data-aos="fade-up">
+                    <div class="service-card__icon">💬</div>
+                    <h3 class="service-card__title">Консультации по программированию</h3>
+                    <p class="service-card__desc">Экспертные консультации по разработке</p>
+                    <div class="service-card__price">от 1 000 ₽</div>
+                </div>
+                <div class="service-card service-card--dev" data-aos="fade-up">
+                    <div class="service-card__icon">🗄</div>
+                    <h3 class="service-card__title">Проектирование БД</h3>
+                    <p class="service-card__desc">Проектирование и оптимизация баз данных</p>
+                    <div class="service-card__price">от 1 000 ₽</div>
+                </div>
+                <div class="service-card service-card--dev" data-aos="fade-up">
+                    <div class="service-card__icon">⚙️</div>
+                    <h3 class="service-card__title">Настройка ИИ</h3>
+                    <p class="service-card__desc">Настройка и кастомизация существующих решений ИИ</p>
+                    <div class="service-card__price">от 1 000 ₽</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about__grid">
+                <div class="about__content">
+                    <span class="section-badge">Обо мне</span>
+                    <h2 class="section-title section-title--left">Почему ко мне</h2>
+                    <div class="about__list">
+                        <div class="about__item">
+                            <div class="about__item-icon">💼</div>
+                            <div>
+                                <h4>Опыт изнутри</h4>
+                                <p>Работал на стороне ЦРПТ и крупных проектов маркировки — знаю систему изнутри</p>
+                            </div>
+                        </div>
+                        <div class="about__item">
+                            <div class="about__item-icon">🎯</div>
+                            <div>
+                                <h4>Десятки клиентов</h4>
+                                <p>Помог десяткам предпринимателей настроить процессы без штрафов и задержек</p>
+                            </div>
+                        </div>
+                        <div class="about__item">
+                            <div class="about__item-icon">📄</div>
+                            <div>
+                                <h4>Полный документооборот</h4>
+                                <p>Беру на себя весь документооборот с системой маркировки</p>
+                            </div>
+                        </div>
+                        <div class="about__item">
+                            <div class="about__item-icon">✔️</div>
+                            <div>
+                                <h4>Официально</h4>
+                                <p>Работаю как самозанятый — с договором и чеками</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about__visual">
+                    <div class="about__card">
+                        <h3>Формат работы</h3>
+                        <div class="about__formats">
+                            <div class="about__format">
+                                <span class="about__format-icon">🔹</span>
+                                <span>Разовая консультация</span>
+                            </div>
+                            <div class="about__format">
+                                <span class="about__format-icon">🔹</span>
+                                <span>Сопровождение на месяц</span>
+                            </div>
+                            <div class="about__format">
+                                <span class="about__format-icon">🔹</span>
+                                <span>Настройка «под ключ»</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="about__card about__card--accent">
+                        <div class="about__card-big">0</div>
+                        <div class="about__card-label">штрафов у моих клиентов</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process -->
+    <section class="process">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Как это работает</span>
+                <h2 class="section-title">Этапы сотрудничества</h2>
+            </div>
+            <div class="process__steps">
+                <div class="process__step">
+                    <div class="process__step-number">01</div>
+                    <h4>Заявка</h4>
+                    <p>Вы оставляете заявку на консультацию или связываетесь со мной любым удобным способом</p>
+                </div>
+                <div class="process__step">
+                    <div class="process__step-number">02</div>
+                    <h4>Анализ</h4>
+                    <p>Анализирую вашу ситуацию и предлагаю оптимальное решение с учётом всех требований</p>
+                </div>
+                <div class="process__step">
+                    <div class="process__step-number">03</div>
+                    <h4>Работа</h4>
+                    <p>Выполняю все необходимые действия: от регистрации до настройки интеграций</p>
+                </div>
+                <div class="process__step">
+                    <div class="process__step-number">04</div>
+                    <h4>Результат</h4>
+                    <p>Ваш бизнес работает с маркировкой без ошибок, штрафов и лишних затрат</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Контакты</span>
+                <h2 class="section-title">Свяжитесь со мной</h2>
+                <p class="section-subtitle">Оставьте заявку и я отвечу вам в течение 24 часов</p>
+            </div>
+            <div class="contact__grid">
+                <form class="contact__form" id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Ваше имя</label>
+                        <input type="text" id="name" name="name" placeholder="Иван Иванов" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Телефон</label>
+                        <input type="tel" id="phone" name="phone" placeholder="+7 (___) ___-__-__" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="email@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="service">Интересующая услуга</label>
+                        <select id="service" name="service">
+                            <option value="">Выберите услугу</option>
+                            <optgroup label="Честный ЗНАК">
+                                <option>Анализ требований и подготовка к регистрации</option>
+                                <option>Консультации по оформлению и маркировке товаров</option>
+                                <option>Помощь в сборе и подготовке документации</option>
+                                <option>Регистрация предприятия в системе</option>
+                                <option>Настройка учётных записей и прав доступа</option>
+                                <option>Интеграция системы учёта с «Честный знак»</option>
+                                <option>Разработка схем маркировки</option>
+                                <option>Обучение сотрудников</option>
+                                <option>Консультации по законодательству</option>
+                                <option>Техническая поддержка</option>
+                                <option>Аудит процессов</option>
+                            </optgroup>
+                            <optgroup label="Программирование">
+                                <option>Создание API</option>
+                                <option>Интеграция с внешними сервисами</option>
+                                <option>ИИ и нейросети</option>
+                                <option>Консультации по программированию</option>
+                                <option>Проектирование базы данных</option>
+                                <option>Настройка ИИ</option>
+                            </optgroup>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Сообщение</label>
+                        <textarea id="message" name="message" rows="4" placeholder="Опишите вашу задачу..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn--primary btn--full">Отправить заявку</button>
+                </form>
+                <div class="contact__info">
+                    <div class="contact__info-card">
+                        <h3>Контактная информация</h3>
+                        <div class="contact__methods">
+                            <div class="contact__method">
+                                <span class="contact__method-icon">📱</span>
+                                <div>
+                                    <span class="contact__method-label">Телефон</span>
+                                    <a href="tel:+79000000000">+7 (900) 000-00-00</a>
+                                </div>
+                            </div>
+                            <div class="contact__method">
+                                <span class="contact__method-icon">✉️</span>
+                                <div>
+                                    <span class="contact__method-label">Email</span>
+                                    <a href="mailto:hello@example.com">hello@example.com</a>
+                                </div>
+                            </div>
+                            <div class="contact__method">
+                                <span class="contact__method-icon">💬</span>
+                                <div>
+                                    <span class="contact__method-label">Telegram</span>
+                                    <a href="#">@username</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact__info-card contact__info-card--dark">
+                        <h3>Режим работы</h3>
+                        <p>Пн — Пт: 09:00 — 18:00</p>
+                        <p>Сб: 10:00 — 15:00</p>
+                        <p>Вс: выходной</p>
+                        <p class="contact__note">Отвечаю в течение 24 часов</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__inner">
+                <div class="footer__brand">
+                    <a href="#" class="logo logo--footer">
+                        <span class="logo__icon">🏷</span>
+                        <span class="logo__text">Честный<span class="logo__accent">ЗНАК</span></span>
+                    </a>
+                    <p>Профессиональные консультации по маркировке товаров</p>
+                </div>
+                <div class="footer__links">
+                    <a href="#services">Услуги</a>
+                    <a href="#programming">Программирование</a>
+                    <a href="#about">Обо мне</a>
+                    <a href="#contact">Контакты</a>
+                </div>
+                <div class="footer__copy">
+                    &copy; 2026 Честный ЗНАК. Все права защищены.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

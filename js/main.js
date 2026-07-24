@@ -151,24 +151,41 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // ============================================
-    // FORM SUBMIT
+    // FORM SUBMIT → Telegram via Google Apps Script
     // ============================================
     var form = document.getElementById('contactForm');
+    var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx53FkSj7GXkuW316y7bs3hCHY_fHFxQHq0rtNnd-_iShQ0L47sZk3_OehBHFAO7J7C/exec';
+
     if (form) {
         form.addEventListener('submit', function (e) {
             e.preventDefault();
+            var submitBtn = form.querySelector('button[type="submit"]');
+            var originalHTML = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<span>Отправка...</span>';
+            submitBtn.disabled = true;
+
             var formData = new FormData(form);
             var data = {};
             formData.forEach(function (value, key) { data[key] = value; });
-            console.log('Form submitted:', data);
 
-            var wrapper = form.closest('.contacts__form-wrapper') || form.parentElement;
-            wrapper.innerHTML =
-                '<div class="form-success">' +
-                    '<div class="form-success__icon">✅</div>' +
-                    '<h3>Заявка отправлена!</h3>' +
-                    '<p>Я свяжусь с вами в ближайшее время.</p>' +
-                '</div>';
+            fetch(SCRIPT_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            }).then(function () {
+                var wrapper = form.closest('.contacts__form-wrapper') || form.parentElement;
+                wrapper.innerHTML =
+                    '<div class="form-success">' +
+                        '<div class="form-success__icon">✅</div>' +
+                        '<h3>Заявка отправлена!</h3>' +
+                        '<p>Я свяжусь с вами в ближайшее время.</p>' +
+                    '</div>';
+            }).catch(function () {
+                submitBtn.innerHTML = originalHTML;
+                submitBtn.disabled = false;
+                alert('Ошибка отправки. Попробуйте ещё раз.');
+            });
         });
     }
 

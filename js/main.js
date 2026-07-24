@@ -137,28 +137,6 @@ document.addEventListener('DOMContentLoaded', function () {
     initAOS();
 
     // ============================================
-    // PRICING TABS
-    // ============================================
-    var pricingTabs = document.querySelectorAll('.pricing__tab');
-    var pricingGrids = document.querySelectorAll('.pricing__grid');
-
-    pricingTabs.forEach(function (tab) {
-        tab.addEventListener('click', function () {
-            pricingTabs.forEach(function (t) { t.classList.remove('active'); });
-            this.classList.add('active');
-
-            var tabId = this.getAttribute('data-tab');
-            pricingGrids.forEach(function (grid) {
-                if (grid.id === tabId) {
-                    grid.classList.remove('hidden');
-                } else {
-                    grid.classList.add('hidden');
-                }
-            });
-        });
-    });
-
-    // ============================================
     // PHONE MASK
     // ============================================
     var phoneInput = document.getElementById('phone');

@@ -380,70 +380,31 @@
     <section class="contacts" id="contacts">
         <div class="container">
             <div class="section-header" data-aos>
-                <span class="section-badge">Контакты</span>
-                <h2 class="section-title">Свяжитесь со мной</h2>
-                <p class="section-subtitle">Отвечу на любые вопросы по маркировке</p>
+                <span class="section-badge">Заявка</span>
+                <h2 class="section-title">Оставьте заявку</h2>
+                <p class="section-subtitle">Опишите задачу — свяжусь с вами и предложу решение</p>
             </div>
-            <div class="contacts__grid">
-                <div class="contacts__info" data-aos>
-                    <div class="contact-item">
-                        <div class="contact-item__icon">
-                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-                        </div>
-                        <div class="contact-item__content">
-                            <h4>Телефон</h4>
-                            <a href="tel:+78001234567">+7 (800) 123-45-67</a>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-item__icon">
-                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-                        </div>
-                        <div class="contact-item__content">
-                            <h4>Email</h4>
-                            <a href="mailto:info@chestniy-znak.ru">info@chestniy-znak.ru</a>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-item__icon">
-                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-                        </div>
-                        <div class="contact-item__content">
-                            <h4>Режим работы</h4>
-                            <span>Пн–Пт: 9:00 – 18:00</span>
-                        </div>
-                    </div>
-                    <div class="contact-note">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                        <span>Отвечаю быстро — обычно в течение часа</span>
-                    </div>
-                </div>
-                <div class="contacts__form-wrapper" data-aos>
-                    <form id="contactForm" class="contacts__form">
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="name">Имя</label>
-                                <input type="text" id="name" name="name" required placeholder="Ваше имя">
-                            </div>
-                            <div class="form-group">
-                                <label for="phone">Телефон</label>
-                                <input type="tel" id="phone" name="phone" required placeholder="+7 (999) 123-45-67">
-                            </div>
+            <div class="contacts__form-wrapper contacts__form-wrapper--centered" data-aos>
+                <form id="contactForm" class="contacts__form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Имя</label>
+                            <input type="text" id="name" name="name" required placeholder="Ваше имя">
                         </div>
                         <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" placeholder="your@email.com">
+                            <label for="phone">Телефон</label>
+                            <input type="tel" id="phone" name="phone" required placeholder="+7 (999) 123-45-67">
                         </div>
-                        <div class="form-group">
-                            <label for="message">Сообщение</label>
-                            <textarea id="message" name="message" rows="4" required placeholder="Опишите вашу задачу..."></textarea>
-                        </div>
-                        <button type="submit" class="btn btn--primary btn--full">
-                            <span>Отправить заявку</span>
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
-                        </button>
-                    </form>
-                </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Опишите вашу задачу</label>
+                        <textarea id="message" name="message" rows="4" required placeholder="Какая категория товаров? Что нужно сделать?"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn--primary btn--full">
+                        <span>Отправить заявку</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                    </button>
+                </form>
             </div>
         </div>
     </section>

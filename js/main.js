@@ -1,6 +1,35 @@
 document.addEventListener('DOMContentLoaded', function () {
 
     // ============================================
+    // THEME TOGGLE
+    // ============================================
+    var themeToggle = document.getElementById('themeToggle');
+    var root = document.documentElement;
+
+    function getPreferredTheme() {
+        var saved = localStorage.getItem('theme');
+        if (saved) return saved;
+        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+
+    function applyTheme(theme) {
+        if (theme === 'dark') {
+            root.setAttribute('data-theme', 'dark');
+        } else {
+            root.removeAttribute('data-theme');
+        }
+    }
+
+    applyTheme(getPreferredTheme());
+
+    themeToggle.addEventListener('click', function () {
+        var current = root.getAttribute('data-theme');
+        var next = current === 'dark' ? 'light' : 'dark';
+        applyTheme(next);
+        localStorage.setItem('theme', next);
+    });
+
+    // ============================================
     // HEADER SCROLL
     // ============================================
     const header = document.getElementById('header');

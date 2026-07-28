@@ -300,6 +300,7 @@ document.addEventListener('DOMContentLoaded', function () {
             data.files = filesData;
             return fetch(SCRIPT_URL, {
                 method: 'POST',
+                mode: 'no-cors',
                 body: JSON.stringify(data)
             });
         }).then(function () {

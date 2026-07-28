@@ -282,7 +282,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // ============================================
     // FORM SUBMITS → Telegram via Google Apps Script
     // ============================================
-    var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbz9PhL9khhyDkgCpeCiebNZyW44AaA7KtfN93whTlw8xMA-48xrnZBB6KlpR9zO9zWd/exec';
+    var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzyf48v5Ls4JxrUQPqWkknx96hsHst19YsOoGzNi4kA06rfrmlvTG04ZcBGOfUs_dhg/exec';
 
     function readFileAsBase64(file) {
         return new Promise(function (resolve, reject) {

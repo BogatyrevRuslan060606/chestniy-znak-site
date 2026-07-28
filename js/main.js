@@ -173,6 +173,17 @@ document.addEventListener('DOMContentLoaded', function () {
             e.preventDefault();
             var tariff = this.getAttribute('data-tariff');
             if (modalTariff) modalTariff.value = tariff;
+
+            if (window.__calcData) {
+                var d = window.__calcData;
+                if (document.getElementById('calcCategory')) document.getElementById('calcCategory').value = d.category || '';
+                if (document.getElementById('calcService')) document.getElementById('calcService').value = d.service || '';
+                if (document.getElementById('calcQuantity')) document.getElementById('calcQuantity').value = d.quantity || '';
+                if (document.getElementById('calcTotalHidden')) document.getElementById('calcTotalHidden').value = d.total || '';
+                if (document.getElementById('calcMonthlyHidden')) document.getElementById('calcMonthlyHidden').value = d.monthly || '';
+                if (document.getElementById('calcBreakdown')) document.getElementById('calcBreakdown').value = d.breakdown || '';
+            }
+
             modalOverlay.classList.add('active');
             document.body.style.overflow = 'hidden';
         });

@@ -250,6 +250,12 @@
             </div>
             <form id="modalForm" class="modal__form">
                 <input type="hidden" id="modalTariff" name="tariff" value="">
+                <input type="hidden" id="calcCategory" name="calc_category" value="">
+                <input type="hidden" id="calcService" name="calc_service" value="">
+                <input type="hidden" id="calcQuantity" name="calc_quantity" value="">
+                <input type="hidden" id="calcTotalHidden" name="calc_total" value="">
+                <input type="hidden" id="calcMonthlyHidden" name="calc_monthly" value="">
+                <input type="hidden" id="calcBreakdown" name="calc_breakdown" value="">
                 <div class="form-row">
                     <div class="form-group">
                         <label for="modalName">Имя *</label>
@@ -455,6 +461,7 @@
 
             var breakdownEl = document.getElementById('breakdownItems');
             breakdownEl.innerHTML = '';
+            var breakdownLines = [];
             items.forEach(function (item) {
                 var div = document.createElement('div');
                 div.className = 'calc-breakdown__item';
@@ -465,6 +472,7 @@
                     '</div>' +
                     '<div class="calc-breakdown__item-amount">' + item.amount.toLocaleString('ru-RU') + ' ₽</div>';
                 breakdownEl.appendChild(div);
+                breakdownLines.push(item.label + ': ' + item.amount.toLocaleString('ru-RU') + ' ₽');
             });
 
             if (service === 'codes' || service === 'full') {
@@ -495,6 +503,21 @@
 
             document.getElementById('calcEmpty').style.display = 'none';
             document.getElementById('calcContent').style.display = 'block';
+
+            var serviceNames = {
+                registration: 'Регистрация в ГИС МТ',
+                codes: 'Регистрация + Коды',
+                full: 'Полное сопровождение'
+            };
+
+            window.__calcData = {
+                category: cat.name + ' (' + cat.group + ')',
+                service: serviceNames[service] || service,
+                quantity: quantity.toLocaleString('ru-RU') + ' ед./мес.',
+                total: total.toLocaleString('ru-RU') + ' ₽',
+                monthly: monthlyTotal.toLocaleString('ru-RU') + ' ₽/мес.',
+                breakdown: breakdownLines.join('\n')
+            };
 
             document.getElementById('calcResults').scrollIntoView({ behavior: 'smooth', block: 'start' });
         }

@@ -168,64 +168,11 @@ document.addEventListener('DOMContentLoaded', function () {
     var modalClose = document.getElementById('modalClose');
     var modalTariff = document.getElementById('modalTariff');
 
-    function populateCalcFields() {
-        var catEl = document.getElementById('calcCategory');
-        var svcEl = document.getElementById('calcService');
-        var qtyEl = document.getElementById('calcQuantity');
-        var totEl = document.getElementById('calcTotalHidden');
-        var monEl = document.getElementById('calcMonthlyHidden');
-        var brkEl = document.getElementById('calcBreakdown');
-        if (!catEl) return;
-
-        var catText = '';
-        var sel = document.getElementById('category');
-        if (sel && sel.selectedOptions && sel.selectedOptions[0]) {
-            catText = sel.selectedOptions[0].text;
-        }
-        catEl.value = catText || '';
-
-        if (svcEl) {
-            var checked = document.querySelector('input[name="service"]:checked');
-            if (checked) {
-                var labels = { registration: 'Регистрация в ГИС МТ', codes: 'Регистрация + Коды', full: 'Полное сопровождение' };
-                svcEl.value = labels[checked.value] || checked.value;
-            }
-        }
-
-        if (qtyEl) {
-            var qty = document.getElementById('quantity');
-            var qtyDisp = document.getElementById('quantityDisplay');
-            qtyEl.value = qty ? (qtyDisp ? qtyDisp.textContent : qty.value) + ' ед./мес.' : '';
-        }
-
-        if (totEl) {
-            var ta = document.getElementById('totalAmount');
-            totEl.value = ta ? ta.textContent + ' ₽' : '';
-        }
-
-        if (monEl) {
-            var ma = document.getElementById('monthlyAmount');
-            monEl.value = ma ? ma.textContent + ' ₽/мес.' : '';
-        }
-
-        if (brkEl) {
-            var lines = [];
-            var items = document.querySelectorAll('.calc-breakdown__item');
-            items.forEach(function (item) {
-                var label = item.querySelector('.calc-breakdown__item-label');
-                var amount = item.querySelector('.calc-breakdown__item-amount');
-                if (label && amount) lines.push(label.textContent + ': ' + amount.textContent);
-            });
-            brkEl.value = lines.join('\n');
-        }
-    }
-
     document.querySelectorAll('.open-modal').forEach(function (btn) {
         btn.addEventListener('click', function (e) {
             e.preventDefault();
             var tariff = this.getAttribute('data-tariff');
             if (modalTariff) modalTariff.value = tariff;
-            populateCalcFields();
             modalOverlay.classList.add('active');
             document.body.style.overflow = 'hidden';
         });
@@ -410,6 +357,32 @@ document.addEventListener('DOMContentLoaded', function () {
             formData.forEach(function (value, key) {
                 if (key !== 'files') data[key] = value;
             });
+
+            // Read calculator data directly from DOM
+            var sel = document.getElementById('category');
+            if (sel) {
+                data.calc_category = sel.options[sel.selectedIndex] ? sel.options[sel.selectedIndex].text : '';
+            }
+            var checked = document.querySelector('input[name="service"]:checked');
+            if (checked) {
+                var labels = { registration: 'Регистрация в ГИС МТ', codes: 'Регистрация + Коды', full: 'Полное сопровождение' };
+                data.calc_service = labels[checked.value] || checked.value;
+            }
+            var qty = document.getElementById('quantity');
+            if (qty) {
+                data.calc_quantity = (document.getElementById('quantityDisplay') ? document.getElementById('quantityDisplay').textContent : qty.value) + ' ед./мес.';
+            }
+            var ta = document.getElementById('totalAmount');
+            if (ta) data.calc_total = ta.textContent + ' ₽';
+            var ma = document.getElementById('monthlyAmount');
+            if (ma) data.calc_monthly = ma.textContent + ' ₽/мес.';
+            var lines = [];
+            document.querySelectorAll('.calc-breakdown__item').forEach(function (item) {
+                var label = item.querySelector('.calc-breakdown__item-label');
+                var amount = item.querySelector('.calc-breakdown__item-amount');
+                if (label && amount) lines.push(label.textContent + ': ' + amount.textContent);
+            });
+            if (lines.length > 0) data.calc_breakdown = lines.join('\n');
 
             submitToTelegram(data, selectedFiles, function () {
                 modalForm.style.display = 'none';

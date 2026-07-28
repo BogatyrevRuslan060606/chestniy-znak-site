@@ -358,31 +358,12 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (key !== 'files') data[key] = value;
             });
 
-            // Read calculator data directly from DOM
-            var sel = document.getElementById('category');
-            if (sel) {
-                data.calc_category = sel.options[sel.selectedIndex] ? sel.options[sel.selectedIndex].text : '';
-            }
+            data.calc_category = 'ТЕСТ: ' + (document.getElementById('category') ? document.getElementById('category').value : 'нет category');
             var checked = document.querySelector('input[name="service"]:checked');
-            if (checked) {
-                var labels = { registration: 'Регистрация в ГИС МТ', codes: 'Регистрация + Коды', full: 'Полное сопровождение' };
-                data.calc_service = labels[checked.value] || checked.value;
-            }
-            var qty = document.getElementById('quantity');
-            if (qty) {
-                data.calc_quantity = (document.getElementById('quantityDisplay') ? document.getElementById('quantityDisplay').textContent : qty.value) + ' ед./мес.';
-            }
-            var ta = document.getElementById('totalAmount');
-            if (ta) data.calc_total = ta.textContent + ' ₽';
-            var ma = document.getElementById('monthlyAmount');
-            if (ma) data.calc_monthly = ma.textContent + ' ₽/мес.';
-            var lines = [];
-            document.querySelectorAll('.calc-breakdown__item').forEach(function (item) {
-                var label = item.querySelector('.calc-breakdown__item-label');
-                var amount = item.querySelector('.calc-breakdown__item-amount');
-                if (label && amount) lines.push(label.textContent + ': ' + amount.textContent);
-            });
-            if (lines.length > 0) data.calc_breakdown = lines.join('\n');
+            data.calc_service = checked ? checked.value : 'нет service';
+            data.calc_quantity = 'ТЕСТ quantity';
+            data.calc_total = 'ТЕСТ total';
+            data.calc_monthly = 'ТЕСТ monthly';
 
             submitToTelegram(data, selectedFiles, function () {
                 modalForm.style.display = 'none';

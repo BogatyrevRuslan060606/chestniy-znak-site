@@ -3,14 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Калькулятор стоимости маркировки «Честный Знак» | chestniy-znak.online</title>
-    <meta name="description" content="Рассчитайте стоимость маркировки товаров. Калькулятор стоимости регистрации в ГИС МТ, генерации кодов Data Matrix и отчётности.">
+    <title>Калькулятор стоимости маркировки | Рассчитать стоимость маркировки товаров</title>
+    <meta name="description" content="Калькулятор стоимости маркировки товаров в системе «Честный Знак». Рассчитайте стоимость регистрации в ГИС МТ, эмиссии кодов и отчётности.">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://chestniy-znak.online/pricing-calc.html">
-    <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Калькулятор стоимости маркировки",
+        "description": "Рассчитайте стоимость маркировки товаров в системе «Честный Знак»",
+        "url": "https://chestniy-znak.online/pricing-calc.html",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "All"
+    }
+    </script>
 </head>
 <body>
 
@@ -18,257 +30,210 @@
         <div class="container header__container">
             <a href="/" class="header__logo">
                 <span class="logo-icon">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
                 </span>
-                <span>Честный Знак</span>
+                <span class="logo-text">Честный <span class="logo-accent">Знак</span></span>
             </a>
             <nav class="header__nav">
                 <a href="/" class="nav-link">Главная</a>
-                <a href="/about.html" class="nav-link">О системе</a>
-                <a href="/pricing-calc.html" class="nav-link nav-link--active">Калькулятор</a>
-                <a href="/blog/" class="nav-link">Блог</a>
+                <a href="pricing-calc.html" class="nav-link nav-link--active">Калькулятор</a>
+                <a href="/#pricing" class="nav-link">Тарифы</a>
+                <a href="/#cases" class="nav-link">Кейсы</a>
+                <a href="/#faq" class="nav-link">Вопросы</a>
+                <a href="/#contacts" class="nav-link">Контакты</a>
             </nav>
-            <button class="header__theme-toggle" id="themeToggle" aria-label="Переключить тему">
-                <svg class="sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-                <svg class="moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+            <a href="/#contacts" class="header__cta">Бесплатная консультация</a>
+            <button class="theme-toggle" id="themeToggle" aria-label="Переключить тему">
+                <svg class="theme-toggle__sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                <svg class="theme-toggle__moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
             </button>
             <button class="header__burger" id="burger" aria-label="Меню">
                 <span></span><span></span><span></span>
             </button>
         </div>
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="/" class="mobile-nav__link">Главная</a>
+            <a href="pricing-calc.html" class="mobile-nav__link">Калькулятор</a>
+            <a href="/#pricing" class="mobile-nav__link">Тарифы</a>
+            <a href="/#cases" class="mobile-nav__link">Кейсы</a>
+            <a href="/#faq" class="mobile-nav__link">Вопросы</a>
+            <a href="/#contacts" class="mobile-nav__link">Контакты</a>
+        </nav>
     </header>
 
-    <nav class="mobile-nav" id="mobileNav">
-        <a href="/" class="mobile-nav__link">Главная</a>
-        <a href="/about.html" class="mobile-nav__link">О системе</a>
-        <a href="/pricing-calc.html" class="mobile-nav__link">Калькулятор</a>
-        <a href="/blog/" class="mobile-nav__link">Блог</a>
-        <a href="/#contacts" class="mobile-nav__link">Контакты</a>
-    </nav>
-
     <main>
-        <section class="section" style="padding-top: 120px; min-height: 100vh;">
+        <section class="calc-hero">
             <div class="container">
-
-                <div style="text-align: center; margin-bottom: 48px;">
-                    <h1 class="section-title" style="font-size: 2.2rem;">Калькулятор стоимости маркировки</h1>
-                    <p class="section-subtitle">Рассчитайте расходы на подключение к системе «Честный Знак» за 30 секунд</p>
+                <div class="calc-hero__content">
+                    <span class="calc-hero__badge">Бесплатный инструмент</span>
+                    <h1 class="calc-hero__title">Калькулятор стоимости <span class="text-gradient">маркировки</span></h1>
+                    <p class="calc-hero__subtitle">Узнайте точную стоимость подключения к системе «Честный Знак». Заполните параметры — получите детальную смету с учётом вашей товарной категории.</p>
                 </div>
+            </div>
+        </section>
 
+        <section class="calc-main">
+            <div class="container">
                 <div class="calc-layout">
+                    <div class="calc-panel">
+                        <div class="calc-form">
+                            <h2 class="calc-form__title">Параметры расчёта</h2>
 
-                    <!-- FORM -->
-                    <div class="calc-form" data-aos="fade-up">
-                        <div class="calc-form__group">
-                            <label class="calc-form__label">Товарная категория *</label>
-                            <select id="calcCategory" class="calc-form__select" required>
-                                <option value="">Выберите категорию</option>
-                                <optgroup label="Продукты питания и напитки">
-                                    <option value="dairy">Молочная продукция</option>
-                                    <option value="meat">Мясные изделия</option>
-                                    <option value="water">Упакованная вода</option>
-                                    <option value="beer">Пиво и слабоалкогольные напитки</option>
-                                    <option value="tobacco">Табак</option>
-                                    <option value="caviar">Морепродукты (икра)</option>
-                                    <option value="oil">Растительные масла</option>
-                                    <option value="pet_food">Корма для животных</option>
-                                    <option value="canned">Консервированные продукты</option>
-                                    <option value="grocery">Бакалея</option>
-                                    <option value="beverages">Безалкогольные напитки</option>
-                                    <option value="sweets">Сладости</option>
-                                    <option value="groceries">Макароны, крупы, мёд</option>
-                                </optgroup>
-                                <optgroup label="Фармацевтика и здоровье">
-                                    <option value="medicines">Лекарства</option>
-                                    <option value="medical">Медицинские изделия</option>
-                                    <option value="bad">БАД</option>
-                                    <option value="vet">Ветеринарные препараты</option>
-                                    <option value="sportpit">Спортивное питание</option>
-                                </optgroup>
-                                <optgroup label="Косметика и бытовая химия">
-                                    <option value="perfume">Духи и туалетная вода</option>
-                                    <option value="cosmetics">Косметика и бытовая химия</option>
-                                </optgroup>
-                                <optgroup label="Непродовольственные товары">
-                                    <option value="footwear">Обувь</option>
-                                    <option value="light_industry">Товары лёгкой промышленности</option>
-                                    <option value="fur">Меховые изделия</option>
-                                    <option value="toys">Детские игрушки</option>
-                                    <option value="bicycles">Велосипеды</option>
-                                </optgroup>
-                                <optgroup label="Авто">
-                                    <option value="tyres">Шины и покрышки</option>
-                                    <option value="autofluids">Моторные масла</option>
-                                </optgroup>
-                                <optgroup label="Электроника и техника">
-                                    <option value="radio">Радиоэлектроника</option>
-                                    <option value="cameras">Фотоаппараты и лампы-вспышки</option>
-                                </optgroup>
-                                <optgroup label="Строительство">
-                                    <option value="cement">Строительные материалы</option>
-                                </optgroup>
-                            </select>
-                        </div>
-
-                        <div class="calc-form__group">
-                            <label class="calc-form__label">Количество единиц товара *</label>
-                            <div class="calc-form__slider-row">
-                                <input type="range" id="calcQuantity" class="calc-form__slider" min="100" max="100000" value="1000" step="100">
-                                <input type="number" id="calcQuantityInput" class="calc-form__number" min="100" max="100000" value="1000" step="100">
+                            <div class="form-group">
+                                <label for="category">Категория товаров</label>
+                                <div class="select-wrapper">
+                                    <select id="category" name="category">
+                                        <optgroup label="Продукты питания и напитки">
+                                            <option value="beer">Пиво и слабоалкогольные напитки</option>
+                                            <option value="dairy">Молочная продукция</option>
+                                            <option value="water">Упакованная вода</option>
+                                            <option value="tobacco">Табак</option>
+                                            <option value="caviar">Морепродукты (икра)</option>
+                                            <option value="oil">Растительные масла</option>
+                                            <option value="pet_food">Корма для животных</option>
+                                            <option value="canned">Консервированные продукты</option>
+                                            <option value="grocery">Бакалея</option>
+                                            <option value="beverages">Безалкогольные напитки</option>
+                                            <option value="nonalc_beer">Безалкогольное пиво</option>
+                                            <option value="sweets">Сладости</option>
+                                            <option value="brdrinks">Растворимые напитки</option>
+                                            <option value="groceries_honey">Макароны, крупы, мёд</option>
+                                            <option value="meat">Мясные изделия</option>
+                                        </optgroup>
+                                        <optgroup label="Фармацевтика и здоровье">
+                                            <option value="medicines">Лекарства</option>
+                                            <option value="rehab">Технические средства реабилитации</option>
+                                            <option value="veterinary">Ветеринарные препараты</option>
+                                            <option value="pharm_substances">Фармацевтическое сырьё</option>
+                                            <option value="medical_devices">Медицинские изделия</option>
+                                            <option value="dietarysup">БАД</option>
+                                            <option value="antiseptic">Антисептики</option>
+                                            <option value="sportpit">Спортивное питание</option>
+                                        </optgroup>
+                                        <optgroup label="Косметика, гигиена и бытовая химия">
+                                            <option value="perfumes">Духи и туалетная вода</option>
+                                            <option value="cosmetics">Косметика, бытовая химия</option>
+                                        </optgroup>
+                                        <optgroup label="Непродовольственные товары">
+                                            <option value="light_industry">Товары лёгкой промышленности</option>
+                                            <option value="footwear">Обувь</option>
+                                            <option value="fur">Меховые изделия</option>
+                                            <option value="toys">Детские игрушки</option>
+                                            <option value="bicycles">Велосипеды</option>
+                                        </optgroup>
+                                        <optgroup label="Автомобильная отрасль">
+                                            <option value="tyres">Шины и покрышки</option>
+                                            <option value="autofluids">Моторные масла</option>
+                                        </optgroup>
+                                        <optgroup label="Электроника и техника">
+                                            <option value="radioelectronics">Радиоэлектроника</option>
+                                            <option value="cameras">Фотоаппараты и лампы-вспышки</option>
+                                        </optgroup>
+                                        <optgroup label="Строительство и инфраструктура">
+                                            <option value="cement">Строительные материалы (цемент)</option>
+                                        </optgroup>
+                                        <optgroup label="Пилотные проекты">
+                                            <option value="titan">Титановая металлопродукция</option>
+                                            <option value="optical_fiber">Оптоволокно</option>
+                                            <option value="cables">Кабельная продукция</option>
+                                            <option value="heating">Отопительные приборы</option>
+                                            <option value="pyrotechnics">Пиротехнические изделия</option>
+                                            <option value="polymerpipes">Полимерные трубы</option>
+                                            <option value="autoparts">Автозапчасти</option>
+                                            <option value="chemistry">Средства гигиены</option>
+                                            <option value="homeware">Товары для дома и интерьера</option>
+                                            <option value="fertilizers">Удобрения</option>
+                                            <option value="babyfood">Детское питание</option>
+                                            <option value="wheelchairs">Кресла-коляски</option>
+                                        </optgroup>
+                                    </select>
+                                    <svg class="select-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                                </div>
                             </div>
-                            <div class="calc-form__slider-labels">
-                                <span>100</span>
-                                <span>100 000</span>
+
+                            <div class="form-group">
+                                <label for="quantity">Количество товарных единиц в месяц</label>
+                                <div class="calc-slider">
+                                    <input type="range" id="quantity" name="quantity" min="50" max="100000" value="1000" step="50">
+                                    <div class="calc-slider__labels">
+                                        <span>50</span>
+                                        <span id="quantityDisplay">1 000</span>
+                                        <span>100 000</span>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="calc-form__group">
-                            <label class="calc-form__label">Тип услуги *</label>
-                            <div class="calc-form__radio-group">
-                                <label class="calc-form__radio">
-                                    <input type="radio" name="service" value="registration" checked>
-                                    <span class="calc-form__radio-box">
-                                        <span class="calc-form__radio-title">Только регистрация</span>
-                                        <span class="calc-form__radio-desc">Регистрация в ГИС МТ</span>
-                                    </span>
-                                </label>
-                                <label class="calc-form__radio">
-                                    <input type="radio" name="service" value="registration_codes">
-                                    <span class="calc-form__radio-box">
-                                        <span class="calc-form__radio-title">Регистрация + коды</span>
-                                        <span class="calc-form__radio-desc">Регистрация + генерация кодов</span>
-                                    </span>
-                                </label>
-                                <label class="calc-form__radio">
-                                    <input type="radio" name="service" value="full">
-                                    <span class="calc-form__radio-box">
-                                        <span class="calc-form__radio-title">Полное сопровождение</span>
-                                        <span class="calc-form__radio-desc">Всё включено + отчёты</span>
-                                    </span>
-                                </label>
+                            <div class="form-group">
+                                <label>Тип услуги</label>
+                                <div class="calc-services" id="services">
+                                    <label class="calc-services__item calc-services__item--active" data-service="registration">
+                                        <input type="radio" name="service" value="registration" checked hidden>
+                                        <span class="calc-services__icon">📋</span>
+                                        <span class="calc-services__name">Регистрация в ГИС МТ</span>
+                                        <span class="calc-services__desc">Подключение к системе, настройка профиля</span>
+                                    </label>
+                                    <label class="calc-services__item" data-service="codes">
+                                        <input type="radio" name="service" value="codes" hidden>
+                                        <span class="calc-services__icon">🏷️</span>
+                                        <span class="calc-services__name">Регистрация + Коды</span>
+                                        <span class="calc-services__desc">Регистрация + генерация кодов Data Matrix</span>
+                                    </label>
+                                    <label class="calc-services__item" data-service="full">
+                                        <input type="radio" name="service" value="full" checked hidden>
+                                        <span class="calc-services__icon">⚙️</span>
+                                        <span class="calc-services__name">Полное сопровождение</span>
+                                        <span class="calc-services__desc">Регистрация + коды + отчётность</span>
+                                    </label>
+                                </div>
                             </div>
-                        </div>
 
-                        <button id="calcButton" class="btn btn--primary btn--full" style="margin-top: 8px;">
-                            <span>Рассчитать стоимость</span>
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
-                        </button>
-                    </div>
-
-                    <!-- RESULTS -->
-                    <div class="calc-result" id="calcResult" style="display: none;" data-aos="fade-up" data-aos-delay="100">
-                        <h3 class="calc-result__title">Расчёт стоимости</h3>
-
-                        <div class="calc-result__category" id="resultCategory"></div>
-
-                        <div class="calc-result__rows">
-                            <div class="calc-result__row">
-                                <span>Регистрация в ГИС МТ</span>
-                                <span id="resultRegistration">—</span>
-                            </div>
-                            <div class="calc-result__row" id="resultCodesRow" style="display: none;">
-                                <span>Генерация кодов Data Matrix</span>
-                                <span id="resultCodes">—</span>
-                            </div>
-                            <div class="calc-result__row" id="resultReportRow" style="display: none;">
-                                <span>Отчётность (1 мес.)</span>
-                                <span id="resultReport">—</span>
-                            </div>
-                            <div class="calc-result__row calc-result__row--total">
-                                <span>Итого</span>
-                                <span id="resultTotal">—</span>
-                            </div>
-                        </div>
-
-                        <div class="calc-result__savings" id="resultSavings">
-                            <div class="calc-result__savings-icon">💡</div>
-                            <div>
-                                <strong>Экономия</strong>
-                                <p id="resultSavingsText"></p>
-                            </div>
-                        </div>
-
-                        <div class="calc-result__info">
-                            <p id="resultInfoText"></p>
-                        </div>
-
-                        <div class="calc-result__actions">
-                            <button id="calcDownload" class="btn btn--outline">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                                <span>Скачать отчёт</span>
+                            <button class="btn btn--primary btn--full" id="calcBtn">
+                                <span>Рассчитать стоимость</span>
                             </button>
-                            <a href="#contacts" class="btn btn--primary">
-                                <span>Заказать расчёт</span>
-                            </a>
                         </div>
                     </div>
 
-                </div>
+                    <div class="calc-results" id="calcResults">
+                        <div class="calc-results__empty" id="calcEmpty">
+                            <div class="calc-results__empty-icon">📊</div>
+                            <h3>Заполните параметры и нажмите «Рассчитать»</h3>
+                            <p>Укажите категорию товаров, количество единиц и тип услуги. Получите детальную смету с разбивкой по всем статьям расходов.</p>
+                        </div>
 
-                <!-- CATEGORIES TABLE -->
-                <div style="margin-top: 80px;" data-aos="fade-up">
-                    <h2 class="section-title" style="text-align: center; font-size: 1.6rem;">Стоимость по категориям</h2>
-                    <p class="section-subtitle">Ориентировочные цены на регистрацию и генерацию кодов</p>
+                        <div class="calc-results__content" id="calcContent" style="display:none;">
+                            <div class="calc-results__header">
+                                <h2 class="calc-results__title">Смета стоимости маркировки</h2>
+                                <p class="calc-results__subtitle" id="calcResultsSummary">Рассчёт для <strong>Молочной продукции</strong> — 1 000 ед./мес.</p>
+                            </div>
 
-                    <div style="overflow-x: auto; margin-top: 32px;">
-                        <table class="calc-table">
-                            <thead>
-                                <tr>
-                                    <th>Категория</th>
-                                    <th>Регистрация</th>
-                                    <th>Код (руб./шт.)</th>
-                                    <th>Отчётность (мес.)</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr><td colspan="4" class="calc-table__group">Продукты питания и напитки</td></tr>
-                                <tr><td>Молочная продукция</td><td>3 000 ₽</td><td>0,04</td><td>7 000 ₽</td></tr>
-                                <tr><td>Мясные изделия</td><td>3 000 ₽</td><td>0,05</td><td>8 000 ₽</td></tr>
-                                <tr><td>Упакованная вода</td><td>3 000 ₽</td><td>0,03</td><td>5 000 ₽</td></tr>
-                                <tr><td>Пиво и слабоалкогольные напитки</td><td>3 000 ₽</td><td>0,05</td><td>8 000 ₽</td></tr>
-                                <tr><td>Табак</td><td>3 000 ₽</td><td>0,06</td><td>10 000 ₽</td></tr>
-                                <tr><td>Морепродукты (икра)</td><td>3 000 ₽</td><td>0,08</td><td>10 000 ₽</td></tr>
-                                <tr><td>Растительные масла</td><td>3 000 ₽</td><td>0,04</td><td>6 000 ₽</td></tr>
-                                <tr><td>Корма для животных</td><td>3 000 ₽</td><td>0,04</td><td>6 000 ₽</td></tr>
-                                <tr><td>Консервированные продукты</td><td>3 000 ₽</td><td>0,04</td><td>6 000 ₽</td></tr>
-                                <tr><td>Бакалея</td><td>3 000 ₽</td><td>0,04</td><td>6 000 ₽</td></tr>
-                                <tr><td>Безалкогольные напитки</td><td>3 000 ₽</td><td>0,04</td><td>6 000 ₽</td></tr>
-                                <tr><td>Сладости</td><td>3 000 ₽</td><td>0,04</td><td>6 000 ₽</td></tr>
-                                <tr><td>Макароны, крупы, мёд</td><td>3 000 ₽</td><td>0,04</td><td>6 000 ₽</td></tr>
+                            <div class="calc-total" id="calcTotal">
+                                <div class="calc-total__amount"><span id="totalAmount">0</span> ₽</div>
+                                <div class="calc-total__label">Итого (разово)</div>
+                            </div>
 
-                                <tr><td colspan="4" class="calc-table__group">Фармацевтика и здоровье</td></tr>
-                                <tr><td>Лекарства</td><td>3 000 ₽</td><td>0,10</td><td>15 000 ₽</td></tr>
-                                <tr><td>Медицинские изделия</td><td>3 000 ₽</td><td>0,08</td><td>12 000 ₽</td></tr>
-                                <tr><td>БАД</td><td>3 000 ₽</td><td>0,06</td><td>8 000 ₽</td></tr>
-                                <tr><td>Ветеринарные препараты</td><td>3 000 ₽</td><td>0,06</td><td>8 000 ₽</td></tr>
-                                <tr><td>Спортивное питание</td><td>3 000 ₽</td><td>0,05</td><td>7 000 ₽</td></tr>
+                            <div class="calc-breakdown">
+                                <h3 class="calc-breakdown__title">Детальная разбивка</h3>
+                                <div class="calc-breakdown__items" id="breakdownItems">
+                                </div>
+                            </div>
 
-                                <tr><td colspan="4" class="calc-table__group">Косметика и бытовая химия</td></tr>
-                                <tr><td>Духи и туалетная вода</td><td>3 000 ₽</td><td>0,06</td><td>8 000 ₽</td></tr>
-                                <tr><td>Косметика и бытовая химия</td><td>3 000 ₽</td><td>0,05</td><td>7 000 ₽</td></tr>
+                            <div class="calc-monthly">
+                                <h3 class="calc-monthly__title">Ежемесячное обслуживание</h3>
+                                <div class="calc-monthly__amount"><span id="monthlyAmount">0</span> ₽ / мес.</div>
+                                <ul class="calc-monthly__list" id="monthlyItems"></ul>
+                            </div>
 
-                                <tr><td colspan="4" class="calc-table__group">Непродовольственные товары</td></tr>
-                                <tr><td>Обувь</td><td>3 000 ₽</td><td>0,05</td><td>8 000 ₽</td></tr>
-                                <tr><td>Товары лёгкой промышленности</td><td>3 000 ₽</td><td>0,05</td><td>8 000 ₽</td></tr>
-                                <tr><td>Меховые изделия</td><td>3 000 ₽</td><td>0,06</td><td>10 000 ₽</td></tr>
-                                <tr><td>Детские игрушки</td><td>3 000 ₽</td><td>0,05</td><td>7 000 ₽</td></tr>
-                                <tr><td>Велосипеды</td><td>3 000 ₽</td><td>0,05</td><td>7 000 ₽</td></tr>
+                            <button class="btn btn--outline" id="pdfBtn" style="width:100%;justify-content:center;margin-top:12px;">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                                <span>Скачать смету (PDF)</span>
+                            </button>
 
-                                <tr><td colspan="4" class="calc-table__group">Авто</td></tr>
-                                <tr><td>Шины и покрышки</td><td>3 000 ₽</td><td>0,05</td><td>7 000 ₽</td></tr>
-                                <tr><td>Моторные масла</td><td>3 000 ₽</td><td>0,05</td><td>7 000 ₽</td></tr>
-
-                                <tr><td colspan="4" class="calc-table__group">Электроника и техника</td></tr>
-                                <tr><td>Радиоэлектроника</td><td>3 000 ₽</td><td>0,07</td><td>10 000 ₽</td></tr>
-                                <tr><td>Фотоаппараты и лампы-вспышки</td><td>3 000 ₽</td><td>0,06</td><td>8 000 ₽</td></tr>
-
-                                <tr><td colspan="4" class="calc-table__group">Строительство</td></tr>
-                                <tr><td>Строительные материалы</td><td>3 000 ₽</td><td>0,04</td><td>6 000 ₽</td></tr>
-                            </tbody>
-                        </table>
+                            <button class="btn btn--primary open-modal" data-tariff="Калькулятор: полное сопровождение" style="width:100%;justify-content:center;margin-top:8px;">
+                                <span>Оставить заявку</span>
+                            </button>
+                        </div>
                     </div>
                 </div>
-
             </div>
         </section>
     </main>
@@ -286,6 +251,264 @@
     </footer>
 
     <script src="js/main.js"></script>
-    <script src="js/calc.js"></script>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Category data with pricing
+        var CATEGORY_PRICES = {
+            // Продукты питания
+            beer:       { name: 'Пиво и слабоалкогольные напитки', codePrice: 0.05, regPrice: 3000, reportPrice: 5000, group: 'Продукты питания' },
+            dairy:      { name: 'Молочная продукция', codePrice: 0.04, regPrice: 3000, reportPrice: 5000, group: 'Продукты питания' },
+            water:      { name: 'Упакованная вода', codePrice: 0.03, regPrice: 3000, reportPrice: 5000, group: 'Продукты питания' },
+            tobacco:    { name: 'Табак', codePrice: 0.10, regPrice: 5000, reportPrice: 15000, group: 'Продукты питания' },
+            caviar:     { name: 'Морепродукты (икра)', codePrice: 0.06, regPrice: 3000, reportPrice: 5000, group: 'Продукты питания' },
+            oil:        { name: 'Растительные масла', codePrice: 0.04, regPrice: 3000, reportPrice: 5000, group: 'Продукты питания' },
+            pet_food:   { name: 'Корма для животных', codePrice: 0.04, regPrice: 3000, reportPrice: 5000, group: 'Продукты питания' },
+            canned:     { name: 'Консервированные продукты', codePrice: 0.05, regPrice: 3000, reportPrice: 5000, group: 'Продукты питания' },
+            grocery:    { name: 'Бакалея', codePrice: 0.03, regPrice: 3000, reportPrice: 5000, group: 'Продукты питания' },
+            beverages:  { name: 'Безалкогольные напитки', codePrice: 0.04, regPrice: 3000, reportPrice: 5000, group: 'Продукты питания' },
+            nonalc_beer:{ name: 'Безалкогольное пиво', codePrice: 0.04, regPrice: 3000, reportPrice: 5000, group: 'Продукты питания' },
+            sweets:     { name: 'Сладости', codePrice: 0.04, regPrice: 3000, reportPrice: 5000, group: 'Продукты питания' },
+            brdrinks:   { name: 'Растворимые напитки', codePrice: 0.04, regPrice: 3000, reportPrice: 5000, group: 'Продукты питания' },
+            groceries_honey: { name: 'Макароны, крупы, мёд', codePrice: 0.03, regPrice: 3000, reportPrice: 5000, group: 'Продукты питания' },
+            meat:       { name: 'Мясные изделия', codePrice: 0.05, regPrice: 3000, reportPrice: 5000, group: 'Продукты питания' },
+            // Фармацевтика
+            medicines:  { name: 'Лекарства', codePrice: 0.08, regPrice: 5000, reportPrice: 15000, group: 'Фармацевтика' },
+            rehab:      { name: 'Технические средства реабилитации', codePrice: 0.06, regPrice: 3000, reportPrice: 8000, group: 'Фармацевтика' },
+            veterinary: { name: 'Ветеринарные препараты', codePrice: 0.06, regPrice: 3000, reportPrice: 8000, group: 'Фармацевтика' },
+            pharm_substances: { name: 'Фармацевтическое сырьё', codePrice: 0.07, regPrice: 5000, reportPrice: 12000, group: 'Фармацевтика' },
+            medical_devices: { name: 'Медицинские изделия', codePrice: 0.06, regPrice: 3000, reportPrice: 8000, group: 'Фармацевтика' },
+            dietarysup: { name: 'БАД', codePrice: 0.05, regPrice: 3000, reportPrice: 5000, group: 'Фармацевтика' },
+            antiseptic: { name: 'Антисептики', codePrice: 0.05, regPrice: 3000, reportPrice: 5000, group: 'Фармацевтика' },
+            sportpit:   { name: 'Спортивное питание', codePrice: 0.05, regPrice: 3000, reportPrice: 5000, group: 'Фармацевтика' },
+            // Косметика
+            perfumes:   { name: 'Духи и туалетная вода', codePrice: 0.06, regPrice: 3000, reportPrice: 8000, group: 'Косметика' },
+            cosmetics:  { name: 'Косметика, бытовая химия', codePrice: 0.05, regPrice: 3000, reportPrice: 5000, group: 'Косметика' },
+            // Непродовольственные
+            light_industry: { name: 'Товары лёгкой промышленности', codePrice: 0.05, regPrice: 3000, reportPrice: 5000, group: 'Непродовольственные' },
+            footwear:   { name: 'Обувь', codePrice: 0.05, regPrice: 3000, reportPrice: 5000, group: 'Непродовольственные' },
+            fur:        { name: 'Меховые изделия', codePrice: 0.06, regPrice: 3000, reportPrice: 8000, group: 'Непродовольственные' },
+            toys:       { name: 'Детские игрушки', codePrice: 0.04, regPrice: 3000, reportPrice: 5000, group: 'Непродовольственные' },
+            bicycles:   { name: 'Велосипеды', codePrice: 0.05, regPrice: 3000, reportPrice: 5000, group: 'Непродовольственные' },
+            // Авто
+            tyres:      { name: 'Шины и покрышки', codePrice: 0.05, regPrice: 3000, reportPrice: 5000, group: 'Автомобильная отрасль' },
+            autofluids: { name: 'Моторные масла', codePrice: 0.05, regPrice: 3000, reportPrice: 5000, group: 'Автомобильная отрасль' },
+            // Электроника
+            radioelectronics: { name: 'Радиоэлектроника', codePrice: 0.07, regPrice: 5000, reportPrice: 12000, group: 'Электроника' },
+            cameras:    { name: 'Фотоаппараты и лампы-вспышки', codePrice: 0.06, regPrice: 3000, reportPrice: 8000, group: 'Электроника' },
+            // Строительство
+            cement:     { name: 'Строительные материалы (цемент)', codePrice: 0.03, regPrice: 3000, reportPrice: 5000, group: 'Строительство' },
+            // Пилотные
+            titan:      { name: 'Титановая металлопродукция', codePrice: 0.04, regPrice: 3000, reportPrice: 5000, group: 'Пилотные проекты' },
+            optical_fiber: { name: 'Оптоволокно', codePrice: 0.04, regPrice: 3000, reportPrice: 5000, group: 'Пилотные проекты' },
+            cables:     { name: 'Кабельная продукция', codePrice: 0.04, regPrice: 3000, reportPrice: 5000, group: 'Пилотные проекты' },
+            heating:    { name: 'Отопительные приборы', codePrice: 0.04, regPrice: 3000, reportPrice: 5000, group: 'Пилотные проекты' },
+            pyrotechnics: { name: 'Пиротехнические изделия', codePrice: 0.05, regPrice: 3000, reportPrice: 5000, group: 'Пилотные проекты' },
+            polymerpipes: { name: 'Полимерные трубы', codePrice: 0.04, regPrice: 3000, reportPrice: 5000, group: 'Пилотные проекты' },
+            autoparts:  { name: 'Автозапчасти', codePrice: 0.05, regPrice: 3000, reportPrice: 5000, group: 'Пилотные проекты' },
+            chemistry:  { name: 'Средства гигиены', codePrice: 0.04, regPrice: 3000, reportPrice: 5000, group: 'Пилотные проекты' },
+            homeware:   { name: 'Товары для дома и интерьера', codePrice: 0.04, regPrice: 3000, reportPrice: 5000, group: 'Пилотные проекты' },
+            fertilizers: { name: 'Удобрения', codePrice: 0.04, regPrice: 3000, reportPrice: 5000, group: 'Пилотные проекты' },
+            babyfood:   { name: 'Детское питание', codePrice: 0.05, regPrice: 3000, reportPrice: 5000, group: 'Пилотные проекты' },
+            wheelchairs: { name: 'Кресла-коляски', codePrice: 0.06, regPrice: 3000, reportPrice: 8000, group: 'Пилотные проекты' }
+        };
+
+        var quantityRange = document.getElementById('quantity');
+        var quantityDisplay = document.getElementById('quantityDisplay');
+        var calcBtn = document.getElementById('calcBtn');
+
+        quantityRange.addEventListener('input', function () {
+            quantityDisplay.textContent = Number(this.value).toLocaleString('ru-RU');
+        });
+
+        document.querySelectorAll('.calc-services__item').forEach(function (item) {
+            item.addEventListener('click', function () {
+                document.querySelectorAll('.calc-services__item').forEach(function (i) { i.classList.remove('calc-services__item--active'); });
+                this.classList.add('calc-services__item--active');
+            });
+        });
+
+        calcBtn.addEventListener('click', calculate);
+
+        function calculate() {
+            var category = document.getElementById('category').value;
+            var quantity = parseInt(document.getElementById('quantity').value);
+            var service = document.querySelector('input[name="service"]:checked').value;
+
+            if (!category || !CATEGORY_PRICES[category]) return;
+
+            var cat = CATEGORY_PRICES[category];
+
+            var items = [];
+            var total = 0;
+            var monthlyTotal = 0;
+
+            var numCodes = Math.ceil(quantity * 1.05);
+
+            items.push({
+                label: 'Регистрация в ГИС МТ',
+                desc: 'Включение в систему, получение УКЭП, настройка профиля',
+                amount: cat.regPrice,
+                type: 'one-time'
+            });
+            total += cat.regPrice;
+
+            if (service === 'codes' || service === 'full') {
+                var codeCost = Math.round(numCodes * cat.codePrice);
+                items.push({
+                    label: 'Генерация кодов Data Matrix',
+                    desc: numCodes.toLocaleString('ru-RU') + ' кодов x ' + cat.codePrice.toFixed(2) + ' ₽ (включая 5% запас)',
+                    amount: codeCost,
+                    type: 'one-time'
+                });
+                total += codeCost;
+
+                var codesMonthly = Math.round(quantity * cat.codePrice * 1.1);
+                monthlyTotal += codesMonthly;
+            }
+
+            if (service === 'full') {
+                items.push({
+                    label: 'Настройка ЭДО',
+                    desc: 'Подключение электронного документооборота',
+                    amount: 5000,
+                    type: 'one-time'
+                });
+                total += 5000;
+
+                items.push({
+                    label: 'Интеграция с учётной системой',
+                    desc: 'Настройка обмена данными (1С, ERP)',
+                    amount: 10000,
+                    type: 'one-time'
+                });
+                total += 10000;
+
+                monthlyTotal += cat.reportPrice;
+            }
+
+            var totalElem = document.getElementById('totalAmount');
+            totalElem.textContent = total.toLocaleString('ru-RU');
+
+            var breakdownEl = document.getElementById('breakdownItems');
+            breakdownEl.innerHTML = '';
+            items.forEach(function (item) {
+                var div = document.createElement('div');
+                div.className = 'calc-breakdown__item';
+                div.innerHTML =
+                    '<div class="calc-breakdown__item-info">' +
+                        '<div class="calc-breakdown__item-label">' + item.label + '</div>' +
+                        '<div class="calc-breakdown__item-desc">' + item.desc + '</div>' +
+                    '</div>' +
+                    '<div class="calc-breakdown__item-amount">' + item.amount.toLocaleString('ru-RU') + ' ₽</div>';
+                breakdownEl.appendChild(div);
+            });
+
+            if (service === 'codes' || service === 'full') {
+                document.getElementById('monthlyAmount').textContent = monthlyTotal.toLocaleString('ru-RU');
+                var monthlyItems = document.getElementById('monthlyItems');
+                monthlyItems.innerHTML = '';
+                if (service === 'codes' || service === 'full') {
+                    var li1 = document.createElement('li');
+                    li1.textContent = 'Пополнение кодов маркировки — от ' + Math.round(quantity * cat.codePrice * 1.1).toLocaleString('ru-RU') + ' ₽/мес.';
+                    monthlyItems.appendChild(li1);
+                }
+                if (service === 'full') {
+                    var li2 = document.createElement('li');
+                    li2.textContent = 'Отчётность — от ' + cat.reportPrice.toLocaleString('ru-RU') + ' ₽/мес.';
+                    monthlyItems.appendChild(li2);
+                    var li3 = document.createElement('li');
+                    li3.textContent = 'Поддержка 24/7 — бесплатно';
+                    monthlyItems.appendChild(li3);
+                }
+            } else {
+                document.getElementById('monthlyAmount').textContent = '0';
+                var monthlyItems = document.getElementById('monthlyItems');
+                monthlyItems.innerHTML = '<li>Нет ежемесячных платежей</li>';
+            }
+
+            var summary = document.getElementById('calcResultsSummary');
+            summary.innerHTML = 'Расчёт для <strong>' + cat.name + '</strong> — ' + quantity.toLocaleString('ru-RU') + ' ед./мес.';
+
+            document.getElementById('calcEmpty').style.display = 'none';
+            document.getElementById('calcContent').style.display = 'block';
+
+            document.getElementById('calcResults').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function updateTariffBtn() {
+            var service = document.querySelector('input[name="service"]:checked');
+            if (service) {
+                var names = { registration: 'Регистрация', codes: 'Регистрация + Коды', full: 'Полное сопровождение' };
+                var btn = document.querySelector('.open-modal[data-tariff]');
+                if (btn) {
+                    btn.setAttribute('data-tariff', 'Калькулятор: ' + names[service.value]);
+                }
+            }
+        }
+
+        document.querySelectorAll('input[name="service"]').forEach(function (radio) {
+            radio.addEventListener('change', updateTariffBtn);
+        });
+
+        // PDF Generation
+        document.getElementById('pdfBtn').addEventListener('click', function () {
+            var results = document.getElementById('calcContent');
+            var cat = CATEGORY_PRICES[document.getElementById('category').value];
+            var quantity = document.getElementById('quantity').value;
+            var total = document.getElementById('totalAmount').textContent;
+
+            var printWin = window.open('', '_blank');
+            printWin.document.write('<html><head><title>Смета маркировки</title>');
+            printWin.document.write('<style>body{font-family:Inter,sans-serif;padding:40px;color:#1e293b;max-width:700px;margin:0 auto;}');
+            printWin.document.write('h1{font-size:24px;margin-bottom:4px;}');
+            printWin.document.write('.sub{color:#64748b;font-size:14px;margin-bottom:24px;}');
+            printWin.document.write('table{width:100%;border-collapse:collapse;margin-bottom:24px;}');
+            printWin.document.write('th,td{padding:12px;text-align:left;border-bottom:1px solid #e2e8f0;}');
+            printWin.document.write('th{background:#f8fafc;font-weight:600;font-size:14px;}');
+            printWin.document.write('td{font-size:14px;}');
+            printWin.document.write('.total-row{font-weight:700;font-size:16px;}');
+            printWin.document.write('.total-row td{border-bottom:2px solid #4f46e5;}');
+            printWin.document.write('.footer{color:#94a3b8;font-size:12px;margin-top:40px;text-align:center;}');
+            printWin.document.write('.badge{display:inline-block;background:#eef2ff;color:#4f46e5;padding:4px 12px;border-radius:6px;font-size:12px;font-weight:600;margin-bottom:12px;}');
+            printWin.document.write('.two-col{display:flex;justify-content:space-between;margin-bottom:24px;}');
+            printWin.document.write('.two-col div{flex:1;}');
+            printWin.document.write('.two-col .label{color:#64748b;font-size:12px;}');
+            printWin.document.write('.two-col .value{font-size:18px;font-weight:700;}');
+            printWin.document.write('</style></head><body>');
+            printWin.document.write('<div class="badge">Честный Знак — помощь с маркировкой</div>');
+            printWin.document.write('<h1>Смета стоимости маркировки</h1>');
+            printWin.document.write('<p class="sub">Категория: ' + cat.name + ' | Количество: ' + Number(quantity).toLocaleString('ru-RU') + ' ед./мес.</p>');
+
+            var rows = document.querySelectorAll('.calc-breakdown__item');
+            printWin.document.write('<table><thead><tr><th style="width:60%">Услуга</th><th>Описание</th><th style="text-align:right">Стоимость</th></tr></thead><tbody>');
+            rows.forEach(function (row) {
+                var label = row.querySelector('.calc-breakdown__item-label').textContent;
+                var desc = row.querySelector('.calc-breakdown__item-desc').textContent;
+                var amount = row.querySelector('.calc-breakdown__item-amount').textContent;
+                printWin.document.write('<tr><td>' + label + '</td><td>' + desc + '</td><td style="text-align:right">' + amount + '</td></tr>');
+            });
+            printWin.document.write('</tbody></table>');
+
+            printWin.document.write('<div class="two-col">');
+            printWin.document.write('<div><div class="label">Итого разово</div><div class="value">' + total + ' ₽</div></div>');
+            printWin.document.write('<div><div class="label">Ежемесячно</div><div class="value">' + document.getElementById('monthlyAmount').textContent + ' ₽/мес.</div></div>');
+            printWin.document.write('</div>');
+
+            printWin.document.write('<div class="footer">Смета носит ознакомительный характер. Точная стоимость рассчитывается после консультации. chestniy-znak.online</div>');
+            printWin.document.write('</body></html>');
+            printWin.document.close();
+            printWin.focus();
+
+            setTimeout(function () {
+                printWin.print();
+            }, 500);
+        });
+
+        // Run initial calculation
+        calculate();
+        updateTariffBtn();
+    });
+    </script>
 </body>
 </html>

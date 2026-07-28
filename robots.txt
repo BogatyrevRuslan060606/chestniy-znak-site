@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+
+Sitemap: https://chestniy-znak.online/sitemap.xml
+
+# Crawl-delay: 1

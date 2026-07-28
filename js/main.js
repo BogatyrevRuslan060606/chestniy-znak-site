@@ -358,14 +358,38 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (key !== 'files') data[key] = value;
             });
 
-            data.calc_category = 'ТЕСТ: ' + (document.getElementById('category') ? document.getElementById('category').value : 'нет category');
+            var sel = document.getElementById('category');
+            if (sel && sel.selectedIndex >= 0) {
+                data.calc_category = sel.options[sel.selectedIndex].text;
+            }
             var checked = document.querySelector('input[name="service"]:checked');
-            data.calc_service = checked ? checked.value : 'нет service';
-            data.calc_quantity = 'ТЕСТ quantity';
-            data.calc_total = 'ТЕСТ total';
-            data.calc_monthly = 'ТЕСТ monthly';
+            if (checked) {
+                var labels = { registration: 'Регистрация в ГИС МТ', codes: 'Регистрация + Коды', full: 'Полное сопровождение' };
+                data.calc_service = labels[checked.value] || checked.value;
+            }
+            var qtyInput = document.getElementById('quantity');
+            if (qtyInput) {
+                var qtyDisplay = document.getElementById('quantityDisplay');
+                data.calc_quantity = (qtyDisplay ? qtyDisplay.textContent : qtyInput.value) + ' ед./мес.';
+            }
+            var totalEl = document.getElementById('totalAmount');
+            if (totalEl) data.calc_total = totalEl.textContent + ' ₽';
+            var monthlyEl = document.getElementById('monthlyAmount');
+            if (monthlyEl) data.calc_monthly = monthlyEl.textContent + ' ₽/мес.';
+
+            var breakdownLines = [];
+            document.querySelectorAll('.calc-breakdown__item').forEach(function (item) {
+                var label = item.querySelector('.calc-breakdown__item-label');
+                var amount = item.querySelector('.calc-breakdown__item-amount');
+                if (label && amount) breakdownLines.push(label.textContent + ': ' + amount.textContent);
+            });
+            if (breakdownLines.length > 0) data.calc_breakdown = breakdownLines.join('\n');
 
             submitToTelegram(data, selectedFiles, function () {
+                modalForm.style.display = 'none';
+                modalSuccess.style.display = 'block';
+                selectedFiles = [];
+                renderFileList();
                 modalForm.style.display = 'none';
                 modalSuccess.style.display = 'block';
                 selectedFiles = [];

@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Калькулятор стоимости маркировки «Честный Знак» | chestniy-znak.online</title>
+    <meta name="description" content="Рассчитайте стоимость маркировки товаров. Калькулятор стоимости регистрации в ГИС МТ, генерации кодов Data Matrix и отчётности.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://chestniy-znak.online/pricing-calc.html">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="header" id="header">
+        <div class="container header__container">
+            <a href="/" class="header__logo">
+                <span class="logo-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                </span>
+                <span>Честный Знак</span>
+            </a>
+            <nav class="header__nav">
+                <a href="/" class="nav-link">Главная</a>
+                <a href="/about.html" class="nav-link">О системе</a>
+                <a href="/pricing-calc.html" class="nav-link nav-link--active">Калькулятор</a>
+                <a href="/blog/" class="nav-link">Блог</a>
+            </nav>
+            <button class="header__theme-toggle" id="themeToggle" aria-label="Переключить тему">
+                <svg class="sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                <svg class="moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+            </button>
+            <button class="header__burger" id="burger" aria-label="Меню">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <nav class="mobile-nav" id="mobileNav">
+        <a href="/" class="mobile-nav__link">Главная</a>
+        <a href="/about.html" class="mobile-nav__link">О системе</a>
+        <a href="/pricing-calc.html" class="mobile-nav__link">Калькулятор</a>
+        <a href="/blog/" class="mobile-nav__link">Блог</a>
+        <a href="/#contacts" class="mobile-nav__link">Контакты</a>
+    </nav>
+
+    <main>
+        <section class="section" style="padding-top: 120px; min-height: 100vh;">
+            <div class="container">
+
+                <div style="text-align: center; margin-bottom: 48px;">
+                    <h1 class="section-title" style="font-size: 2.2rem;">Калькулятор стоимости маркировки</h1>
+                    <p class="section-subtitle">Рассчитайте расходы на подключение к системе «Честный Знак» за 30 секунд</p>
+                </div>
+
+                <div class="calc-layout">
+
+                    <!-- FORM -->
+                    <div class="calc-form" data-aos="fade-up">
+                        <div class="calc-form__group">
+                            <label class="calc-form__label">Товарная категория *</label>
+                            <select id="calcCategory" class="calc-form__select" required>
+                                <option value="">Выберите категорию</option>
+                                <optgroup label="Продукты питания и напитки">
+                                    <option value="dairy">Молочная продукция</option>
+                                    <option value="meat">Мясные изделия</option>
+                                    <option value="water">Упакованная вода</option>
+                                    <option value="beer">Пиво и слабоалкогольные напитки</option>
+                                    <option value="tobacco">Табак</option>
+                                    <option value="caviar">Морепродукты (икра)</option>
+                                    <option value="oil">Растительные масла</option>
+                                    <option value="pet_food">Корма для животных</option>
+                                    <option value="canned">Консервированные продукты</option>
+                                    <option value="grocery">Бакалея</option>
+                                    <option value="beverages">Безалкогольные напитки</option>
+                                    <option value="sweets">Сладости</option>
+                                    <option value="groceries">Макароны, крупы, мёд</option>
+                                </optgroup>
+                                <optgroup label="Фармацевтика и здоровье">
+                                    <option value="medicines">Лекарства</option>
+                                    <option value="medical">Медицинские изделия</option>
+                                    <option value="bad">БАД</option>
+                                    <option value="vet">Ветеринарные препараты</option>
+                                    <option value="sportpit">Спортивное питание</option>
+                                </optgroup>
+                                <optgroup label="Косметика и бытовая химия">
+                                    <option value="perfume">Духи и туалетная вода</option>
+                                    <option value="cosmetics">Косметика и бытовая химия</option>
+                                </optgroup>
+                                <optgroup label="Непродовольственные товары">
+                                    <option value="footwear">Обувь</option>
+                                    <option value="light_industry">Товары лёгкой промышленности</option>
+                                    <option value="fur">Меховые изделия</option>
+                                    <option value="toys">Детские игрушки</option>
+                                    <option value="bicycles">Велосипеды</option>
+                                </optgroup>
+                                <optgroup label="Авто">
+                                    <option value="tyres">Шины и покрышки</option>
+                                    <option value="autofluids">Моторные масла</option>
+                                </optgroup>
+                                <optgroup label="Электроника и техника">
+                                    <option value="radio">Радиоэлектроника</option>
+                                    <option value="cameras">Фотоаппараты и лампы-вспышки</option>
+                                </optgroup>
+                                <optgroup label="Строительство">
+                                    <option value="cement">Строительные материалы</option>
+                                </optgroup>
+                            </select>
+                        </div>
+
+                        <div class="calc-form__group">
+                            <label class="calc-form__label">Количество единиц товара *</label>
+                            <div class="calc-form__slider-row">
+                                <input type="range" id="calcQuantity" class="calc-form__slider" min="100" max="100000" value="1000" step="100">
+                                <input type="number" id="calcQuantityInput" class="calc-form__number" min="100" max="100000" value="1000" step="100">
+                            </div>
+                            <div class="calc-form__slider-labels">
+                                <span>100</span>
+                                <span>100 000</span>
+                            </div>
+                        </div>
+
+                        <div class="calc-form__group">
+                            <label class="calc-form__label">Тип услуги *</label>
+                            <div class="calc-form__radio-group">
+                                <label class="calc-form__radio">
+                                    <input type="radio" name="service" value="registration" checked>
+                                    <span class="calc-form__radio-box">
+                                        <span class="calc-form__radio-title">Только регистрация</span>
+                                        <span class="calc-form__radio-desc">Регистрация в ГИС МТ</span>
+                                    </span>
+                                </label>
+                                <label class="calc-form__radio">
+                                    <input type="radio" name="service" value="registration_codes">
+                                    <span class="calc-form__radio-box">
+                                        <span class="calc-form__radio-title">Регистрация + коды</span>
+                                        <span class="calc-form__radio-desc">Регистрация + генерация кодов</span>
+                                    </span>
+                                </label>
+                                <label class="calc-form__radio">
+                                    <input type="radio" name="service" value="full">
+                                    <span class="calc-form__radio-box">
+                                        <span class="calc-form__radio-title">Полное сопровождение</span>
+                                        <span class="calc-form__radio-desc">Всё включено + отчёты</span>
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <button id="calcButton" class="btn btn--primary btn--full" style="margin-top: 8px;">
+                            <span>Рассчитать стоимость</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                        </button>
+                    </div>
+
+                    <!-- RESULTS -->
+                    <div class="calc-result" id="calcResult" style="display: none;" data-aos="fade-up" data-aos-delay="100">
+                        <h3 class="calc-result__title">Расчёт стоимости</h3>
+
+                        <div class="calc-result__category" id="resultCategory"></div>
+
+                        <div class="calc-result__rows">
+                            <div class="calc-result__row">
+                                <span>Регистрация в ГИС МТ</span>
+                                <span id="resultRegistration">—</span>
+                            </div>
+                            <div class="calc-result__row" id="resultCodesRow" style="display: none;">
+                                <span>Генерация кодов Data Matrix</span>
+                                <span id="resultCodes">—</span>
+                            </div>
+                            <div class="calc-result__row" id="resultReportRow" style="display: none;">
+                                <span>Отчётность (1 мес.)</span>
+                                <span id="resultReport">—</span>
+                            </div>
+                            <div class="calc-result__row calc-result__row--total">
+                                <span>Итого</span>
+                                <span id="resultTotal">—</span>
+                            </div>
+                        </div>
+
+                        <div class="calc-result__savings" id="resultSavings">
+                            <div class="calc-result__savings-icon">💡</div>
+                            <div>
+                                <strong>Экономия</strong>
+                                <p id="resultSavingsText"></p>
+                            </div>
+                        </div>
+
+                        <div class="calc-result__info">
+                            <p id="resultInfoText"></p>
+                        </div>
+
+                        <div class="calc-result__actions">
+                            <button id="calcDownload" class="btn btn--outline">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                                <span>Скачать отчёт</span>
+                            </button>
+                            <a href="#contacts" class="btn btn--primary">
+                                <span>Заказать расчёт</span>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- CATEGORIES TABLE -->
+                <div style="margin-top: 80px;" data-aos="fade-up">
+                    <h2 class="section-title" style="text-align: center; font-size: 1.6rem;">Стоимость по категориям</h2>
+                    <p class="section-subtitle">Ориентировочные цены на регистрацию и генерацию кодов</p>
+
+                    <div style="overflow-x: auto; margin-top: 32px;">
+                        <table class="calc-table">
+                            <thead>
+                                <tr>
+                                    <th>Категория</th>
+                                    <th>Регистрация</th>
+                                    <th>Код (руб./шт.)</th>
+                                    <th>Отчётность (мес.)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td colspan="4" class="calc-table__group">Продукты питания и напитки</td></tr>
+                                <tr><td>Молочная продукция</td><td>3 000 ₽</td><td>0,04</td><td>7 000 ₽</td></tr>
+                                <tr><td>Мясные изделия</td><td>3 000 ₽</td><td>0,05</td><td>8 000 ₽</td></tr>
+                                <tr><td>Упакованная вода</td><td>3 000 ₽</td><td>0,03</td><td>5 000 ₽</td></tr>
+                                <tr><td>Пиво и слабоалкогольные напитки</td><td>3 000 ₽</td><td>0,05</td><td>8 000 ₽</td></tr>
+                                <tr><td>Табак</td><td>3 000 ₽</td><td>0,06</td><td>10 000 ₽</td></tr>
+                                <tr><td>Морепродукты (икра)</td><td>3 000 ₽</td><td>0,08</td><td>10 000 ₽</td></tr>
+                                <tr><td>Растительные масла</td><td>3 000 ₽</td><td>0,04</td><td>6 000 ₽</td></tr>
+                                <tr><td>Корма для животных</td><td>3 000 ₽</td><td>0,04</td><td>6 000 ₽</td></tr>
+                                <tr><td>Консервированные продукты</td><td>3 000 ₽</td><td>0,04</td><td>6 000 ₽</td></tr>
+                                <tr><td>Бакалея</td><td>3 000 ₽</td><td>0,04</td><td>6 000 ₽</td></tr>
+                                <tr><td>Безалкогольные напитки</td><td>3 000 ₽</td><td>0,04</td><td>6 000 ₽</td></tr>
+                                <tr><td>Сладости</td><td>3 000 ₽</td><td>0,04</td><td>6 000 ₽</td></tr>
+                                <tr><td>Макароны, крупы, мёд</td><td>3 000 ₽</td><td>0,04</td><td>6 000 ₽</td></tr>
+
+                                <tr><td colspan="4" class="calc-table__group">Фармацевтика и здоровье</td></tr>
+                                <tr><td>Лекарства</td><td>3 000 ₽</td><td>0,10</td><td>15 000 ₽</td></tr>
+                                <tr><td>Медицинские изделия</td><td>3 000 ₽</td><td>0,08</td><td>12 000 ₽</td></tr>
+                                <tr><td>БАД</td><td>3 000 ₽</td><td>0,06</td><td>8 000 ₽</td></tr>
+                                <tr><td>Ветеринарные препараты</td><td>3 000 ₽</td><td>0,06</td><td>8 000 ₽</td></tr>
+                                <tr><td>Спортивное питание</td><td>3 000 ₽</td><td>0,05</td><td>7 000 ₽</td></tr>
+
+                                <tr><td colspan="4" class="calc-table__group">Косметика и бытовая химия</td></tr>
+                                <tr><td>Духи и туалетная вода</td><td>3 000 ₽</td><td>0,06</td><td>8 000 ₽</td></tr>
+                                <tr><td>Косметика и бытовая химия</td><td>3 000 ₽</td><td>0,05</td><td>7 000 ₽</td></tr>
+
+                                <tr><td colspan="4" class="calc-table__group">Непродовольственные товары</td></tr>
+                                <tr><td>Обувь</td><td>3 000 ₽</td><td>0,05</td><td>8 000 ₽</td></tr>
+                                <tr><td>Товары лёгкой промышленности</td><td>3 000 ₽</td><td>0,05</td><td>8 000 ₽</td></tr>
+                                <tr><td>Меховые изделия</td><td>3 000 ₽</td><td>0,06</td><td>10 000 ₽</td></tr>
+                                <tr><td>Детские игрушки</td><td>3 000 ₽</td><td>0,05</td><td>7 000 ₽</td></tr>
+                                <tr><td>Велосипеды</td><td>3 000 ₽</td><td>0,05</td><td>7 000 ₽</td></tr>
+
+                                <tr><td colspan="4" class="calc-table__group">Авто</td></tr>
+                                <tr><td>Шины и покрышки</td><td>3 000 ₽</td><td>0,05</td><td>7 000 ₽</td></tr>
+                                <tr><td>Моторные масла</td><td>3 000 ₽</td><td>0,05</td><td>7 000 ₽</td></tr>
+
+                                <tr><td colspan="4" class="calc-table__group">Электроника и техника</td></tr>
+                                <tr><td>Радиоэлектроника</td><td>3 000 ₽</td><td>0,07</td><td>10 000 ₽</td></tr>
+                                <tr><td>Фотоаппараты и лампы-вспышки</td><td>3 000 ₽</td><td>0,06</td><td>8 000 ₽</td></tr>
+
+                                <tr><td colspan="4" class="calc-table__group">Строительство</td></tr>
+                                <tr><td>Строительные материалы</td><td>3 000 ₽</td><td>0,04</td><td>6 000 ₽</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer__container">
+            <a href="/" class="footer__logo">
+                <span class="logo-icon logo-icon--sm">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                </span>
+                <span>Честный Знак</span>
+            </a>
+            <p class="footer__copyright">&copy; 2026 Помощь с маркировкой «Честный Знак». Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/calc.js"></script>
+</body>
+</html>

@@ -273,21 +273,35 @@ document.addEventListener('DOMContentLoaded', function () {
     // ============================================
     var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx53FkSj7GXkuW316y7bs3hCHY_fHFxQHq0rtNnd-_iShQ0L47sZk3_OehBHFAO7J7C/exec';
 
-    function submitToTelegram(data, files, successCallback, errorCallback) {
-        var formData = new FormData();
-        Object.keys(data).forEach(function (key) {
-            formData.append(key, data[key]);
+    function readFileAsBase64(file) {
+        return new Promise(function (resolve, reject) {
+            var reader = new FileReader();
+            reader.onload = function () {
+                resolve({
+                    name: file.name,
+                    mimeType: file.type,
+                    data: reader.result.split(',')[1]
+                });
+            };
+            reader.onerror = reject;
+            reader.readAsDataURL(file);
         });
+    }
+
+    function submitToTelegram(data, files, successCallback, errorCallback) {
+        var filesPromises = [];
         if (files && files.length > 0) {
             files.forEach(function (file) {
-                formData.append('files', file);
+                filesPromises.push(readFileAsBase64(file));
             });
         }
 
-        fetch(SCRIPT_URL, {
-            method: 'POST',
-            mode: 'no-cors',
-            body: formData
+        Promise.all(filesPromises).then(function (filesData) {
+            data.files = filesData;
+            return fetch(SCRIPT_URL, {
+                method: 'POST',
+                body: JSON.stringify(data)
+            });
         }).then(function () {
             successCallback();
         }).catch(function () {

@@ -486,16 +486,26 @@
                 <form id="contactForm" class="contacts__form">
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="name">Имя</label>
+                            <label for="name">Имя *</label>
                             <input type="text" id="name" name="name" required placeholder="Ваше имя">
                         </div>
                         <div class="form-group">
-                            <label for="phone">Телефон</label>
+                            <label for="phone">Телефон *</label>
                             <input type="tel" id="phone" name="phone" required placeholder="+7 (999) 123-45-67">
                         </div>
                     </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">E-mail</label>
+                            <input type="email" id="email" name="email" placeholder="example@mail.ru">
+                        </div>
+                        <div class="form-group">
+                            <label for="telegram">Telegram</label>
+                            <input type="text" id="telegram" name="telegram" placeholder="@username или ссылка">
+                        </div>
+                    </div>
                     <div class="form-group">
-                        <label for="message">Опишите вашу задачу</label>
+                        <label for="message">Опишите вашу задачу *</label>
                         <textarea id="message" name="message" rows="4" required placeholder="Какая категория товаров? Что нужно сделать?"></textarea>
                     </div>
                     <button type="submit" class="btn btn--primary btn--full">

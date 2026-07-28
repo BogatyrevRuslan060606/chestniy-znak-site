@@ -168,22 +168,64 @@ document.addEventListener('DOMContentLoaded', function () {
     var modalClose = document.getElementById('modalClose');
     var modalTariff = document.getElementById('modalTariff');
 
+    function populateCalcFields() {
+        var catEl = document.getElementById('calcCategory');
+        var svcEl = document.getElementById('calcService');
+        var qtyEl = document.getElementById('calcQuantity');
+        var totEl = document.getElementById('calcTotalHidden');
+        var monEl = document.getElementById('calcMonthlyHidden');
+        var brkEl = document.getElementById('calcBreakdown');
+        if (!catEl) return;
+
+        var catText = '';
+        var sel = document.getElementById('category');
+        if (sel && sel.selectedOptions && sel.selectedOptions[0]) {
+            catText = sel.selectedOptions[0].text;
+        }
+        catEl.value = catText || '';
+
+        if (svcEl) {
+            var checked = document.querySelector('input[name="service"]:checked');
+            if (checked) {
+                var labels = { registration: 'Регистрация в ГИС МТ', codes: 'Регистрация + Коды', full: 'Полное сопровождение' };
+                svcEl.value = labels[checked.value] || checked.value;
+            }
+        }
+
+        if (qtyEl) {
+            var qty = document.getElementById('quantity');
+            var qtyDisp = document.getElementById('quantityDisplay');
+            qtyEl.value = qty ? (qtyDisp ? qtyDisp.textContent : qty.value) + ' ед./мес.' : '';
+        }
+
+        if (totEl) {
+            var ta = document.getElementById('totalAmount');
+            totEl.value = ta ? ta.textContent + ' ₽' : '';
+        }
+
+        if (monEl) {
+            var ma = document.getElementById('monthlyAmount');
+            monEl.value = ma ? ma.textContent + ' ₽/мес.' : '';
+        }
+
+        if (brkEl) {
+            var lines = [];
+            var items = document.querySelectorAll('.calc-breakdown__item');
+            items.forEach(function (item) {
+                var label = item.querySelector('.calc-breakdown__item-label');
+                var amount = item.querySelector('.calc-breakdown__item-amount');
+                if (label && amount) lines.push(label.textContent + ': ' + amount.textContent);
+            });
+            brkEl.value = lines.join('\n');
+        }
+    }
+
     document.querySelectorAll('.open-modal').forEach(function (btn) {
         btn.addEventListener('click', function (e) {
             e.preventDefault();
             var tariff = this.getAttribute('data-tariff');
             if (modalTariff) modalTariff.value = tariff;
-
-            if (window.__calcData) {
-                var d = window.__calcData;
-                if (document.getElementById('calcCategory')) document.getElementById('calcCategory').value = d.category || '';
-                if (document.getElementById('calcService')) document.getElementById('calcService').value = d.service || '';
-                if (document.getElementById('calcQuantity')) document.getElementById('calcQuantity').value = d.quantity || '';
-                if (document.getElementById('calcTotalHidden')) document.getElementById('calcTotalHidden').value = d.total || '';
-                if (document.getElementById('calcMonthlyHidden')) document.getElementById('calcMonthlyHidden').value = d.monthly || '';
-                if (document.getElementById('calcBreakdown')) document.getElementById('calcBreakdown').value = d.breakdown || '';
-            }
-
+            populateCalcFields();
             modalOverlay.classList.add('active');
             document.body.style.overflow = 'hidden';
         });
